@@ -1,4 +1,4 @@
-wax_account: uszym.wam
+wax_account: h1eyi.wam
 use_proxy: false
 proxy: 127.0.0.1:10809
 build: true
@@ -7,4 +7,4 @@ chicken: true
 plant: true
 cow: true
 mbs: true
-recover_energy: 500
+recover_energy: 100
