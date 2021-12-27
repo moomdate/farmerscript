@@ -839,9 +839,9 @@ class Farmer:
             self.scan_resource()
             time.sleep(cfg.req_interval)
 
-            # if user_param.mbs:
-            #     self.scan_mbs()
-            #     time.sleep(cfg.req_interval)
+            if user_param.mbs:
+                self.scan_mbs()
+                time.sleep(cfg.req_interval)
             # if user_param.build:
             #     self.scan_buildings()
             #     time.sleep(cfg.req_interval)

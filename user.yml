@@ -7,4 +7,4 @@ chicken: true
 plant: true
 cow: true
 mbs: true
-recover_energy: 100
+recover_energy: 700
