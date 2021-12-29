@@ -842,15 +842,15 @@ class Farmer:
             if user_param.mbs:
                 self.scan_mbs()
                 time.sleep(cfg.req_interval)
-            # if user_param.build:
-            #     self.scan_buildings()
-            #     time.sleep(cfg.req_interval)
-            # if user_param.plant:
-            #     self.scan_crops()
-            #     time.sleep(cfg.req_interval)
-            # if user_param.chicken:
-            #     self.scan_animals()
-            #     time.sleep(cfg.req_interval)
+            if user_param.build:
+                self.scan_buildings()
+                time.sleep(cfg.req_interval)
+            if user_param.plant:
+                self.scan_crops()
+                time.sleep(cfg.req_interval)
+            if user_param.chicken:
+                self.scan_animals()
+                time.sleep(cfg.req_interval)
             if user_param.mining:
                 self.scan_mining()
                 time.sleep(cfg.req_interval)
