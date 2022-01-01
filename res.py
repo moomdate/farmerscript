@@ -319,7 +319,7 @@ def create_farming(item: dict) -> Farming:
         fm = CornSeed()
     elif template_id == NFT.BarleySeed:
         fm = BarleySeed()
-    elif template_id == NFT.Chicken:
+    elif template_id == NFT.Chicken or template_id == NFT.Chick:
         fm = Chicken()
         fm.day_claims_at = [datetime.fromtimestamp(item) for item in item["day_claims_at"]]
     else:

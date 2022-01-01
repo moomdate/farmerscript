@@ -459,7 +459,7 @@ class Farmer:
         resp = resp.json()
         animals = []
         for item in resp["rows"]:
-            if item["name"] != "Chicken":
+            if item["name"] != "Chicken" and item["name"] != "Chick":
                 continue
             anim: Chicken = res.create_farming(item)
             animals.append(anim)
