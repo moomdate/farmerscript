@@ -19,6 +19,7 @@ class NFT:
     DairyCow: int = 298607
     Cow: int = 298603
     Calf: int = 298600
+    FemaleCalf = 298599
     CornSeed: int = 298596
     BarleySeed: int = 298595
 
@@ -66,6 +67,11 @@ class Animal(Farming):
 # 大鸡
 @dataclass(init=False)
 class Chicken(Animal):
+    energy_consumed: int = 0
+
+# 大鸡
+@dataclass(init=False)
+class Cow(Animal):
     energy_consumed: int = 0
 
 
@@ -282,7 +288,7 @@ def init_mbs_config(rows: List[dict]):
 def create_mbs(item: dict) -> MBS:
     mbs_class = mbs_table.get(item["template_id"], None)
     if not mbs_class:
-        return None
+        return None     
     mbs = MBS(mbs_class.template_id, mbs_class.name, mbs_class.type)
     mbs.asset_id = item["asset_id"]
     mbs.next_availability = datetime.fromtimestamp(item["next_availability"])
@@ -321,6 +327,9 @@ def create_farming(item: dict) -> Farming:
         fm = BarleySeed()
     elif template_id == NFT.Chicken or template_id == NFT.Chick:
         fm = Chicken()
+        fm.day_claims_at = [datetime.fromtimestamp(item) for item in item["day_claims_at"]]
+    elif template_id == NFT.FemaleCalf or template_id == NFT.Cow:
+        fm = Cow()
         fm.day_claims_at = [datetime.fromtimestamp(item) for item in item["day_claims_at"]]
     else:
         raise Exception("尚未支持的作物类型:{0}".format(item))

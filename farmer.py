@@ -20,7 +20,7 @@ import utils
 from utils import plat
 from settings import user_param
 import res
-from res import Building, Resoure, Animal, Asset, Farming, Crop, NFT, Axe, Tool, Token, Chicken, FishingRod, MBS
+from res import Building, Resoure, Animal, Asset, Farming, Crop, NFT, Axe, Tool, Token, Chicken, FishingRod, MBS, Cow
 from datetime import datetime, timedelta
 from settings import cfg
 import os
@@ -459,10 +459,12 @@ class Farmer:
         resp = resp.json()
         animals = []
         for item in resp["rows"]:
-            if item["name"] != "Chicken" and item["name"] != "Chick":
-                continue
-            anim: Chicken = res.create_farming(item)
-            animals.append(anim)
+            if item["name"] == "Chicken" or item["name"] == "Chick":
+                anim: Chicken = res.create_farming(item)
+                animals.append(anim)
+            if item["name"] == "Calf (FeMale)" or item["name"] == "Cow":
+                anim: Cow = res.create_farming(item)
+                animals.append(anim)
         return animals
 
     # 喂鸡
@@ -569,7 +571,7 @@ class Farmer:
                 if item.is_ready == 1:
                     continue
             # 鸡24小时内最多喂4次
-            if isinstance(item, Chicken):
+            if isinstance(item, Chicken) or isinstance(item, Cow):
                 if len(item.day_claims_at) >= 4:
                     next_op_time = item.day_claims_at[0] + timedelta(hours=24)
                     item.next_availability = max(item.next_availability, next_op_time)
