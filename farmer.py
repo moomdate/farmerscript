@@ -572,7 +572,11 @@ class Farmer:
                     continue
             # 鸡24小时内最多喂4次
             if isinstance(item, Chicken) or isinstance(item, Cow):
-                if len(item.day_claims_at) >= 4:
+                if (item.name == 'Cow'):
+                    if len(item.day_claims_at) >= 6:
+                        next_op_time = item.day_claims_at[0] + timedelta(hours=24)
+                        item.next_availability = max(item.next_availability, next_op_time)
+                elif len(item.day_claims_at) >= 4:
                     next_op_time = item.day_claims_at[0] + timedelta(hours=24)
                     item.next_availability = max(item.next_availability, next_op_time)
             if now < item.next_availability:
