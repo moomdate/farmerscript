@@ -470,7 +470,7 @@ class Farmer:
     # 喂鸡
     def feed_chicken(self, asset_id_food: str, chicken: Chicken) -> bool:
         self.log.info("feed [{0}] to [{1}]".format(asset_id_food, chicken.asset_id))
-        self.consume_energy(Decimal(chicken.energy_consumed))
+        self.consume_energy(Decimal(chicken.energy_consumed), Decimal(200))
         transaction = {
             "actions": [{
                 "account": "atomicassets",
