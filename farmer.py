@@ -462,7 +462,7 @@ class Farmer:
             if item["name"] == "Chicken" or item["name"] == "Chick":
                 anim: Chicken = res.create_farming(item)
                 animals.append(anim)
-            if item["name"] == "Calf (FeMale)" or item["name"] == "Cow":
+            if item["name"] == "Calf (FeMale)" or item["name"] == "Dairy Cow":
                 anim: Cow = res.create_farming(item)
                 animals.append(anim)
         return animals
@@ -572,7 +572,7 @@ class Farmer:
                     continue
             # 鸡24小时内最多喂4次
             if isinstance(item, Chicken) or isinstance(item, Cow):
-                if (item.name == 'Cow'):
+                if (item.name == 'Dairy Cow'):
                     if len(item.day_claims_at) >= 6:
                         next_op_time = item.day_claims_at[0] + timedelta(hours=24)
                         item.next_availability = max(item.next_availability, next_op_time)
