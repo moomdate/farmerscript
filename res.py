@@ -19,6 +19,7 @@ class NFT:
     DairyCow: int = 298607
     Cow: int = 298603
     Calf: int = 298600
+    BabyCalf: int = 298597
     FemaleCalf = 298599
     CornSeed: int = 298596
     BarleySeed: int = 298595
@@ -328,7 +329,7 @@ def create_farming(item: dict) -> Farming:
     elif template_id == NFT.Chicken or template_id == NFT.Chick:
         fm = Chicken()
         fm.day_claims_at = [datetime.fromtimestamp(item) for item in item["day_claims_at"]]
-    elif template_id == NFT.FemaleCalf or template_id == NFT.DairyCow or template_id == NFT.Cow:
+    elif template_id == NFT.FemaleCalf or template_id == NFT.DairyCow or template_id == NFT.Cow or template_id == NFT.BabyCalf:
         fm = Cow()
         fm.day_claims_at = [datetime.fromtimestamp(item) for item in item["day_claims_at"]]
     else:

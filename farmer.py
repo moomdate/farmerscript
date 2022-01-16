@@ -576,6 +576,10 @@ class Farmer:
                     if len(item.day_claims_at) >= 6:
                         next_op_time = item.day_claims_at[0] + timedelta(hours=24)
                         item.next_availability = max(item.next_availability, next_op_time)
+                elif (item.name == 'Baby Calf'):
+                    if len(item.day_claims_at) >= 2:
+                        next_op_time = item.day_claims_at[0] + timedelta(hours=24)
+                        item.next_availability = max(item.next_availability, next_op_time)
                 elif len(item.day_claims_at) >= 4:
                     next_op_time = item.day_claims_at[0] + timedelta(hours=24)
                     item.next_availability = max(item.next_availability, next_op_time)
