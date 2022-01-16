@@ -462,7 +462,7 @@ class Farmer:
             if item["name"] == "Chicken" or item["name"] == "Chick":
                 anim: Chicken = res.create_farming(item)
                 animals.append(anim)
-            if item["name"] == "Calf (FeMale)" or item["name"] == "Dairy Cow":
+            if item["name"] == "Calf (FeMale)" or item["name"] == "Dairy Cow" or item["name"] == "Baby Calf":
                 anim: Cow = res.create_farming(item)
                 animals.append(anim)
         return animals
